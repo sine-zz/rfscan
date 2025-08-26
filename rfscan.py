@@ -11,6 +11,7 @@ import time
 import RFExplorer
 from RFExplorer import RFE_Common 
 import math
+import bandLookup
 
 #---------------------------------------------------------
 # Helper functions
@@ -104,6 +105,12 @@ try:
             START_SCAN_MHZ = objRFE.MinFreqMHZ
             STOP_SCAN_MHZ = objRFE.MaxFreqMHZ
             SPAN_SIZE_MHZ = 13.875 # 111 points per span * 0.125 MHz resolution = 13.875 span size
+
+            print("Enter band to scan (leave blank for full range): ")
+            userBand = input()
+            if(userBand!=""):
+                START_SCAN_MHZ, STOP_SCAN_MHZ = bandLookup.bandLookup(userBand)
+
             #Control settings
             SpanSize, StartFreq, StopFreq = ControlSettings(objRFE)
 
