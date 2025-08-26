@@ -100,6 +100,7 @@ try:
 
         #If object is an analyzer, we can scan for received sweeps
         if(objRFE.IsAnalyzer()):
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             print("---- RFE High-Resolution Scan to CSV for WWB ----")
             #update frequency setting. This was added to be compatible with all RFE SA models
             START_SCAN_MHZ = objRFE.MinFreqMHZ
