@@ -20,9 +20,9 @@ import bandLookup
 def PrintScan(objAnalyzer, scanCount):
     nIndex = objAnalyzer.SweepData.Count-1
     objSweepTemp = objAnalyzer.SweepData.GetData(nIndex)
-    objSweepTemp.SaveFileCSV("scan-" + str(scanCount) + '.csv', ';', 0)
+    objSweepTemp.SaveFileCSV("scan-temp-" + str(scanCount) + '.csv', ';', 0)
     # print(objAnalyzer.SweepData.Dump()) # Low-effort progress bar
-    print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")")
+    print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")") #Better progress bar
 
 def ControlSettings(objAnalazyer):
     """This functions check user settings 
@@ -100,7 +100,11 @@ try:
 
         #If object is an analyzer, we can scan for received sweeps
         if(objRFE.IsAnalyzer()):
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            #lazy clear screen
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             print("---- RFE High-Resolution Scan to CSV for WWB ----")
             #update frequency setting. This was added to be compatible with all RFE SA models
             START_SCAN_MHZ = objRFE.MinFreqMHZ
