@@ -1,6 +1,5 @@
 # TODO:
-# Relocate use of the .scandata directory to /tmp/rfscan
-# Put userBand in CSV filename
+# Put userBand in CSV filename (will need to export userBand from Python to bash)
 # Clean up User Settings string that prints to terminal
 
 
@@ -22,8 +21,9 @@ def PrintScan(objAnalyzer, scanCount): # This one I actually wrote
     nIndex = objAnalyzer.SweepData.Count-1
     objSweepTemp = objAnalyzer.SweepData.GetData(nIndex)
     objSweepTemp.SaveFileCSV("scan-temp-" + str(scanCount) + '.csv', ';', 0)
-    # print(objAnalyzer.SweepData.Dump()) # Low-effort progress bar
-    print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")") #Better progress bar
+
+    #Print Progress
+    print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")")
 
 def cls(): #lazy clear screen
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
