@@ -4,7 +4,7 @@
 
 
 #======================================================================================
-# Modified example code. Original file RFE_Example_USB_2.py
+# Modified example code. This code is probably bad and shouldn't be used for anything important. Original file RFE_Example_USB_2.py
 #======================================================================================
 
 import time
