@@ -1,7 +1,8 @@
-#pylint: disable=trailing-whitespace, line-too-long, bad-whitespace, invalid-name, R0204, C0200
-#pylint: disable=superfluous-parens, missing-docstring, broad-except, R0801
-#pylint: disable=too-many-lines, too-many-instance-attributes, too-many-statements, too-many-nested-blocks
-#pylint: disable=too-many-branches, too-many-public-methods, too-many-locals, too-many-arguments
+# TODO:
+# Relocate use of the .scandata directory to /tmp/rfscan
+# Put userBand in CSV filename
+# Clean up User Settings string that prints to terminal
+
 
 #======================================================================================
 # Modified example code. Original file RFE_Example_USB_2.py
@@ -17,12 +18,15 @@ import bandLookup
 # Helper functions
 #---------------------------------------------------------
 
-def PrintScan(objAnalyzer, scanCount):
+def PrintScan(objAnalyzer, scanCount): # This one I actually wrote
     nIndex = objAnalyzer.SweepData.Count-1
     objSweepTemp = objAnalyzer.SweepData.GetData(nIndex)
     objSweepTemp.SaveFileCSV("scan-temp-" + str(scanCount) + '.csv', ';', 0)
     # print(objAnalyzer.SweepData.Dump()) # Low-effort progress bar
     print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")") #Better progress bar
+
+def cls(): #lazy clear screen
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
 def ControlSettings(objAnalazyer):
     """This functions check user settings 
@@ -100,16 +104,11 @@ try:
 
         #If object is an analyzer, we can scan for received sweeps
         if(objRFE.IsAnalyzer()):
-            #lazy clear screen
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            cls()
             print("---- RFE High-Resolution Scan to CSV for WWB ----")
-            #update frequency setting. This was added to be compatible with all RFE SA models
             START_SCAN_MHZ = objRFE.MinFreqMHZ
             STOP_SCAN_MHZ = objRFE.MaxFreqMHZ
-            SPAN_SIZE_MHZ = 13.875 # 111 points per span * 0.125 MHz resolution = 13.875 span size
+            SPAN_SIZE_MHZ = 13.875 # 111 points per window * 0.125 MHz resolution = 13.875 span size
 
             print("Enter band to scan (leave blank for full range): ")
             userBand = input()
@@ -135,8 +134,6 @@ try:
                             objSweep=objRFE.SweepData.GetData(objRFE.SweepData.Count-1)
 
                             nInd += 1
-                            #print("Freq range["+ str(nInd) + "]: " + str(StartFreq) +" - "+ str(StopFreq) + "MHz" )
-                            #PrintPeak(objRFE)
                             PrintScan(objRFE, nInd)
                         if(math.fabs(objRFE.StartFrequencyMHZ - StartFreq) <= 0.001):
                                 break
