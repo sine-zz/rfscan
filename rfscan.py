@@ -12,6 +12,7 @@ import RFExplorer
 from RFExplorer import RFE_Common 
 import math
 import bandLookup
+import os
 
 #---------------------------------------------------------
 # Helper functions
@@ -26,7 +27,8 @@ def PrintScan(objAnalyzer, scanCount): # This one I actually wrote
     print("Scanning " + str("{0:.3f}".format(StartFreq)) + " - " + str("{0:.3f}".format(StopFreq)) + " (" + str(scanCount) + " of " + str(nScans) + ")")
 
 def cls(): #lazy clear screen
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+#print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def ControlSettings(objAnalazyer):
     """This functions check user settings 
